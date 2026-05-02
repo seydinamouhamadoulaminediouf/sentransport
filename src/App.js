@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./Header";
+import StatReseau from "./StatReseau";
 import ListeLignes from "./ListeLignes";
 import Footer from "./Footer";
 function App() {
@@ -10,6 +11,7 @@ function App() {
       depart: "Parcelles Assainies",
       arrivee: "Plateau",
       arrets: 14,
+      couleur: "#e74c3c",
     },
     {
       id: 2,
@@ -17,22 +19,79 @@ function App() {
       depart: "Guediawaye",
       arrivee: "Place Obe",
       arrets: 18,
+      couleur: "#3498db",
     },
-    { id: 3, numero: "15", depart: "Pikine", arrivee: "Medina", arrets: 12 },
+    {
+      id: 3,
+      numero: "15",
+      depart: "Pikine",
+      arrivee: "Medina",
+      arrets: 12,
+      couleur: "#9b59b6",
+    },
     {
       id: 4,
       numero: "23",
       depart: "Ouakam",
       arrivee: "Grand Dakar",
       arrets: 10,
+      couleur: "#e67e22",
     },
-    { id: 5, numero: "8", depart: "Almadies", arrivee: "Colobane", arrets: 16 },
-    { id: 6, numero: "12", depart: "Yoff", arrivee: "Sandaga", arrets: 11 },
+    {
+      id: 5,
+      numero: "8",
+      depart: "Almadies",
+      arrivee: "Colobane",
+      arrets: 16,
+      couleur: "#1abc9c",
+    },
+    {
+      id: 6,
+      numero: "12",
+      depart: "Yoff",
+      arrivee: "Sandaga",
+      arrets: 11,
+      couleur: "#e91e63",
+    },
+    // 4 nouvelles lignes (Exercice 3)
+    {
+      id: 7,
+      numero: "5",
+      depart: "Fann",
+      arrivee: "HLM",
+      arrets: 9,
+      couleur: "#f39c12",
+    },
+    {
+      id: 8,
+      numero: "18",
+      depart: "Liberte",
+      arrivee: "Dieuppeul",
+      arrets: 13,
+      couleur: "#2ecc71",
+    },
+    {
+      id: 9,
+      numero: "31",
+      depart: "Sicap",
+      arrivee: "Medina",
+      arrets: 8,
+      couleur: "#c0392b",
+    },
+    {
+      id: 10,
+      numero: "42",
+      depart: "HLM",
+      arrivee: "Plateau",
+      arrets: 15,
+      couleur: "#2980b9",
+    },
   ];
   return (
     <div className="App">
       <Header />
       <main className="contenu">
+        <StatReseau lignes={lignes} />
         <ListeLignes lignes={lignes} />
       </main>
       <Footer />
