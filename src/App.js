@@ -3,6 +3,7 @@ import Header from "./Header";
 import StatReseau from "./StatReseau";
 import ListeLignes from "./ListeLignes";
 import Footer from "./Footer";
+import Statistique, { StatistiqueArrets, StatistiqueBus } from "./Statistique";
 function App() {
   const lignes = [
     {
@@ -91,6 +92,11 @@ function App() {
     <div className="App">
       <Header />
       <main className="contenu">
+        <div>
+          <Statistique />
+          <StatistiqueArrets />
+          <StatistiqueBus />
+        </div>
         <StatReseau lignes={lignes} />
         <ListeLignes lignes={lignes} />
       </main>

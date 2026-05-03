@@ -1,0 +1,21 @@
+.statistique {
+  display: inline-block;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 20px 30px;
+  margin: 10px;
+  text-align: center;
+}
+
+.statistique-chiffre {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0a6e31;
+  margin: 0;
+}
+
+.statistique-libelle {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 5px 0 0 0;
+}
