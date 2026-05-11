@@ -11,6 +11,7 @@ import DetailLigne from "./DetailLigne";
 function App() {
   const [recherche, setRecherche] = useState("");
   const [ligneSelectionnee, setLigneSelectionnee] = useState(null);
+  const [nbRecherches, setNbRecherches] = useState(0);
   const lignes = [
     {
       id: 1,
@@ -173,11 +174,25 @@ function App() {
           <StatistiqueBus />
         </div>
         <StatReseau lignes={lignes} />
-        <Recherche valeur={recherche} onChange={setRecherche} />
-        <p className="resultat-recherche">
-          {lignesFiltrees.length} ligne{lignesFiltrees.length > 1 ? "s" : ""}{" "}
-          trouvee{lignesFiltrees.length > 1 ? "s" : ""}
+        <p className="compteur-recherches">
+          Vous avez effectue {nbRecherches} recherche
+          {nbRecherches > 1 ? "s" : ""}
         </p>
+        <Recherche
+          valeur={recherche}
+          onChange={(valeur) => {
+            setRecherche(valeur);
+            setNbRecherches((nb) => nb + 1);
+          }}
+        />
+        {lignesFiltrees.length === 0 ? (
+          <p className="aucune-ligne">Aucune ligne trouvee</p>
+        ) : (
+          <p className="resultat-recherche">
+            {lignesFiltrees.length} ligne{lignesFiltrees.length > 1 ? "s" : ""}{" "}
+            trouvee{lignesFiltrees.length > 1 ? "s" : ""}
+          </p>
+        )}
         {lignesFiltrees.map((ligne) => (
           <LigneBus
             key={ligne.id}
