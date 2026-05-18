@@ -1,5 +1,5 @@
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -29,6 +29,37 @@ def get_ligne(ligne_id):
     if ligne is None:
         return jsonify({"erreur": "Ligne non trouvee"}), 404
     return jsonify(ligne)
+
+
+# Exercice 1 : tous les arrêts sans doublons
+@app.route("/arrets")
+def get_arrets():
+    tous_arrets = set()
+    for ligne in lignes:
+        for arret in ligne["listeArrets"]:
+            tous_arrets.add(arret)
+    return jsonify(list(tous_arrets))
+# Exercice 2 : statistiques globales
+@app.route("/stats")
+def get_stats():
+    nb_lignes = len(lignes)
+    nb_arrets_total = sum(l["arrets"] for l in lignes)
+    ligne_max = max(lignes, key=lambda l: l["arrets"])
+    return jsonify({
+        "nombre_lignes": nb_lignes,
+        "total_arrets": nb_arrets_total,
+        "ligne_plus_darrets": ligne_max["numero"]
+    })
+
+# Exercice 3 : recherche par départ ou arrivée
+@app.route("/lignes/recherche")
+def recherche():
+    q = request.args.get("q", "").lower()
+    resultats = [
+        l for l in lignes
+        if q in l["depart"].lower() or q in l["arrivee"].lower()
+    ]
+    return jsonify(resultats)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
