@@ -25,3 +25,34 @@
     height: 300px;
   }
 }
+.btn-centrer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  padding: 8px 14px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.btn-centrer:hover {
+  background-color: #2980b9;
+}
+.arrets-proches {
+  background-color: #e8f5e9;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  color: #0a6e31;
+  font-size: 0.95rem;
+}
+.arrets-proches ul {
+  margin: 6px 0 0 0;
+  padding-left: 16px;
+}
+.arrets-proches li {
+  margin: 4px 0;
+}
