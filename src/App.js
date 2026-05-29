@@ -16,7 +16,9 @@ function App() {
   const [ligneSelectionnee, setLigneSelectionnee] = useState(null);
   const [nbRecherches, setNbRecherches] = useState(0);
 
-  useEffect(() => {
+  function chargerLignes() {
+    setChargement(true);
+    setErreur(null);
     fetch("http://localhost:5000/lignes")
       .then((response) => {
         if (!response.ok) {
@@ -32,6 +34,10 @@ function App() {
         setErreur(error.message);
         setChargement(false);
       });
+  }
+
+  useEffect(() => {
+    chargerLignes();
   }, []);
 
   const lignesFiltrees = lignes.filter(
@@ -44,9 +50,22 @@ function App() {
   function handleClickLigne(ligne) {
     if (ligneSelectionnee && ligneSelectionnee.id === ligne.id) {
       setLigneSelectionnee(null);
-    } else {
-      setLigneSelectionnee(ligne);
+      return;
     }
+
+    fetch(`http://localhost:5000/lignes/${ligne.id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erreur serveur : " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setLigneSelectionnee(data);
+      })
+      .catch((error) => {
+        console.error("Erreur chargement détail :", error.message);
+      });
   }
 
   if (chargement) {
@@ -78,6 +97,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <button className="btn-recharger" onClick={chargerLignes}>
+        ↺ Recharger
+      </button>
       <main className="contenu">
         <div>
           <Statistique />

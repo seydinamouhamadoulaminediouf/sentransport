@@ -92,5 +92,29 @@
       "HLM",
       "Sandaga"
     ]
+  },
+  {
+    "id": 7,
+    "numero": "44",
+    "depart": "Rufisque",
+    "arrivee": "Plateau",
+    "arrets": 20,
+    "couleur": "#8e44ad",
+    "listeArrets": ["Rufisque", "Thiaroye", "Pikine", "Hann", "Plateau"]
+  },
+  {
+    "id": 8,
+    "numero": "55",
+    "depart": "Mbao",
+    "arrivee": "Colobane",
+    "arrets": 17,
+    "couleur": "#16a085",
+    "listeArrets": [
+      "Mbao",
+      "Keur Massar",
+      "Grand Yoff",
+      "Liberte 6",
+      "Colobane"
+    ]
   }
 ]
