@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import Statistique, { StatistiqueArrets, StatistiqueBus } from "./Statistique";
 import Recherche from "./Recherche";
 import DetailLigne from "./DetailLigne";
+import Carte from "./Carte";
 
 function App() {
   const [lignes, setLignes] = useState([]);
@@ -142,6 +143,7 @@ function App() {
         {ligneSelectionnee && ligneSelectionnee.listeArrets && (
           <DetailLigne ligne={ligneSelectionnee} />
         )}
+        <Carte />
       </main>
       <Footer />
     </div>
